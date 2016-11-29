@@ -21,7 +21,7 @@ namespace eDietetyk.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("kzebik_eDietetyk", throwIfV1Schema: false)
         {
         }
 
