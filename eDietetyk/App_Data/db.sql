@@ -23,7 +23,7 @@ create table dbo.Metrics
 	Id int identity not null,
 	IdUser nvarchar(128) not null,
 	Height int not null,
-	Weight numeric(3,2) not null,
+	Weight numeric(6,2) not null,
 	Chest int null,
 	Waist int null,
 	Thigh int null,

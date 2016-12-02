@@ -13,10 +13,10 @@ namespace eDietetyk
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class kzebik_eDietetykEntities : DbContext
+    public partial class EfContext : DbContext
     {
-        public kzebik_eDietetykEntities()
-            : base("name=kzebik_eDietetykEntities")
+        public EfContext()
+            : base("name=EfContext")
         {
         }
     

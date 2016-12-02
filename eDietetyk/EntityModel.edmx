@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Db.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -92,7 +92,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Height" Type="int" Nullable="false" />
-          <Property Name="Weight" Type="numeric" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="Chest" Type="int" />
           <Property Name="Waist" Type="int" />
           <Property Name="Thigh" Type="int" />
@@ -236,7 +236,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -288,47 +288,47 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Db" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="kzebik_eDietetykEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="C__MigrationHistory" EntityType="Db.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Db.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Db.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Db.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Db.AspNetUsers" />
-          <EntitySet Name="Diets" EntityType="Db.Diets" />
-          <EntitySet Name="Meals" EntityType="Db.Meals" />
-          <EntitySet Name="Metrics" EntityType="Db.Metrics" />
-          <EntitySet Name="UserMeals" EntityType="Db.UserMeals" />
-          <EntitySet Name="UsersInfo" EntityType="Db.UsersInfo" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Db.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EfContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUsers" />
+          <EntitySet Name="Diets" EntityType="Model.Diets" />
+          <EntitySet Name="Meals" EntityType="Model.Meals" />
+          <EntitySet Name="Metrics" EntityType="Model.Metrics" />
+          <EntitySet Name="UserMeals" EntityType="Model.UserMeals" />
+          <EntitySet Name="UsersInfo" EntityType="Model.UsersInfo" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Db.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Diets_Id_AspNetUsers_Id" Association="Db.FK_Diets_Id_AspNetUsers_Id">
+          <AssociationSet Name="FK_Diets_Id_AspNetUsers_Id" Association="Model.FK_Diets_Id_AspNetUsers_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Diets" EntitySet="Diets" />
           </AssociationSet>
-          <AssociationSet Name="FK_Metrics_Id_AspNetUsers_Id" Association="Db.FK_Metrics_Id_AspNetUsers_Id">
+          <AssociationSet Name="FK_Metrics_Id_AspNetUsers_Id" Association="Model.FK_Metrics_Id_AspNetUsers_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Metrics" EntitySet="Metrics" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserMeals_Id_AspNetUsers_Id" Association="Db.FK_UserMeals_Id_AspNetUsers_Id">
+          <AssociationSet Name="FK_UserMeals_Id_AspNetUsers_Id" Association="Model.FK_UserMeals_Id_AspNetUsers_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="UserMeals" EntitySet="UserMeals" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Id_AspNetUsers_Id" Association="Db.FK_Users_Id_AspNetUsers_Id">
+          <AssociationSet Name="FK_Users_Id_AspNetUsers_Id" Association="Model.FK_Users_Id_AspNetUsers_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="UsersInfo" EntitySet="UsersInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserMeals_Id_Meals_Id" Association="Db.FK_UserMeals_Id_Meals_Id">
+          <AssociationSet Name="FK_UserMeals_Id_Meals_Id" Association="Model.FK_UserMeals_Id_Meals_Id">
             <End Role="Meals" EntitySet="Meals" />
             <End Role="UserMeals" EntitySet="UserMeals" />
           </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Db.AspNetUserRoles">
+          <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
@@ -349,7 +349,7 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -359,7 +359,7 @@
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserLogins">
           <Key>
@@ -370,7 +370,7 @@
           <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -388,13 +388,13 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Db.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Db.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Diets" Relationship="Db.FK_Diets_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Diets" />
-          <NavigationProperty Name="Metrics" Relationship="Db.FK_Metrics_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Metrics" />
-          <NavigationProperty Name="UserMeals" Relationship="Db.FK_UserMeals_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UserMeals" />
-          <NavigationProperty Name="UsersInfo" Relationship="Db.FK_Users_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UsersInfo" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Db.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Diets" Relationship="Model.FK_Diets_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Diets" />
+          <NavigationProperty Name="Metrics" Relationship="Model.FK_Metrics_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Metrics" />
+          <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UserMeals" />
+          <NavigationProperty Name="UsersInfo" Relationship="Model.FK_Users_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UsersInfo" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Diets">
           <Key>
@@ -404,7 +404,7 @@
           <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CaloriesPerDay" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_Diets_Id_AspNetUsers_Id" FromRole="Diets" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Diets_Id_AspNetUsers_Id" FromRole="Diets" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="Meals">
           <Key>
@@ -415,7 +415,7 @@
           <Property Name="Calories" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="UserMeals" Relationship="Db.FK_UserMeals_Id_Meals_Id" FromRole="Meals" ToRole="UserMeals" />
+          <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="Meals" ToRole="UserMeals" />
         </EntityType>
         <EntityType Name="Metrics">
           <Key>
@@ -424,7 +424,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Height" Type="Int32" Nullable="false" />
-          <Property Name="Weight" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
           <Property Name="Chest" Type="Int32" />
           <Property Name="Waist" Type="Int32" />
           <Property Name="Thigh" Type="Int32" />
@@ -432,7 +432,7 @@
           <Property Name="IsTarget" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_Metrics_Id_AspNetUsers_Id" FromRole="Metrics" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Metrics_Id_AspNetUsers_Id" FromRole="Metrics" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="UserMeals">
           <Key>
@@ -443,8 +443,8 @@
           <Property Name="IdMeal" Type="Int32" Nullable="false" />
           <Property Name="Weight" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_UserMeals_Id_AspNetUsers_Id" FromRole="UserMeals" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Meals" Relationship="Db.FK_UserMeals_Id_Meals_Id" FromRole="UserMeals" ToRole="Meals" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_UserMeals_Id_AspNetUsers_Id" FromRole="UserMeals" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Meals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="UserMeals" ToRole="Meals" />
         </EntityType>
         <EntityType Name="UsersInfo">
           <Key>
@@ -454,13 +454,13 @@
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Db.FK_Users_Id_AspNetUsers_Id" FromRole="UsersInfo" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Users_Id_AspNetUsers_Id" FromRole="UsersInfo" ToRole="AspNetUsers" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Db.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <End Type="Model.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -471,10 +471,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Db.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <End Type="Model.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -485,8 +485,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Diets_Id_AspNetUsers_Id">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="Db.Diets" Role="Diets" Multiplicity="*" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.Diets" Role="Diets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -497,8 +497,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Metrics_Id_AspNetUsers_Id">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="Db.Metrics" Role="Metrics" Multiplicity="*" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.Metrics" Role="Metrics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -509,8 +509,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMeals_Id_AspNetUsers_Id">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="Db.UserMeals" Role="UserMeals" Multiplicity="*" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.UserMeals" Role="UserMeals" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -521,8 +521,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_Id_AspNetUsers_Id">
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="Db.UsersInfo" Role="UsersInfo" Multiplicity="0..1" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.UsersInfo" Role="UsersInfo" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -533,8 +533,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMeals_Id_Meals_Id">
-          <End Type="Db.Meals" Role="Meals" Multiplicity="1" />
-          <End Type="Db.UserMeals" Role="UserMeals" Multiplicity="*" />
+          <End Type="Model.Meals" Role="Meals" Multiplicity="1" />
+          <End Type="Model.UserMeals" Role="UserMeals" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Meals">
               <PropertyRef Name="Id" />
@@ -545,17 +545,17 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Type="Db.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
-          <End Type="Db.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+          <End Type="Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbStoreContainer" CdmEntityContainer="kzebik_eDietetykEntities" >
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EfContext">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="Db.C__MigrationHistory">
+            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
@@ -565,7 +565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="Db.AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -573,7 +573,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="Db.AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaims">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
                 <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
@@ -583,7 +583,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="Db.AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogins">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -592,7 +592,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="Db.AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
@@ -610,7 +610,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Diets">
-            <EntityTypeMapping TypeName="Db.Diets">
+            <EntityTypeMapping TypeName="Model.Diets">
               <MappingFragment StoreEntitySet="Diets">
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CaloriesPerDay" ColumnName="CaloriesPerDay" />
@@ -620,7 +620,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Meals">
-            <EntityTypeMapping TypeName="Db.Meals">
+            <EntityTypeMapping TypeName="Model.Meals">
               <MappingFragment StoreEntitySet="Meals">
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -631,7 +631,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Metrics">
-            <EntityTypeMapping TypeName="Db.Metrics">
+            <EntityTypeMapping TypeName="Model.Metrics">
               <MappingFragment StoreEntitySet="Metrics">
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -648,7 +648,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserMeals">
-            <EntityTypeMapping TypeName="Db.UserMeals">
+            <EntityTypeMapping TypeName="Model.UserMeals">
               <MappingFragment StoreEntitySet="UserMeals">
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
@@ -659,7 +659,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsersInfo">
-            <EntityTypeMapping TypeName="Db.UsersInfo">
+            <EntityTypeMapping TypeName="Model.UsersInfo">
               <MappingFragment StoreEntitySet="UsersInfo">
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -668,7 +668,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Db.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>

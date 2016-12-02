@@ -1,0 +1,28 @@
+﻿@model Metrics
+
+<div class="till">
+    <h2>Twoja metryka</h2>
+    <article>
+        <div>
+            <label>Wzrost</label><span>@Model.Height</span>
+        </div>
+        <div>
+            <label>Waga</label><span>@Model.Weight</span>
+        </div>
+        <div>
+            <label>Obwód w pasie</label><span>@Model.Waist</span>
+        </div>
+        <div>
+            <label>Obwód ud</label><span>@Model.Thigh</span>
+        </div>
+        <div>
+            <label>Obwód ramion</label><span>@Model.Arm</span>
+        </div>
+        <div>
+            <label>Obwód w klatce piersiowej</label><span>@Model.Chest</span>
+        </div>
+    </article>
+    <aside>
+        <a href="/Metrics/Add" class="btn btn-primary">Dodaj</a>
+    </aside>
+</div>
