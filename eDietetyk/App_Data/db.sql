@@ -1,8 +1,8 @@
-﻿drop table dbo.UsersInfo
-drop table dbo.Metrics
-drop table dbo.UserMeals
-drop table dbo.Meals
-drop table dbo.Diets
+﻿--drop table dbo.UsersInfo
+--drop table dbo.Metrics
+--drop table dbo.UserMeals
+--drop table dbo.Meals
+--drop table dbo.Diets
 
 GO
 

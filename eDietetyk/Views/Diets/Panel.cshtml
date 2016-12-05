@@ -1,0 +1,14 @@
+﻿@model eDietetyk.Models.DietsViewModel
+<div class="till">
+    <h2>Dieta</h2>
+    <article>
+        <p>
+            <label>Kalorie zalecane na dziś</label>
+            <span>@(Model.TargetCalories)kcal</span>
+        </p>
+        <p>
+            <label>Kalorie spożyte: </label>
+            <span>@(Model.CurrentCalories)kcal</span>
+        </p>
+    </article>
+</div>

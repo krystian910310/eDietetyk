@@ -5,19 +5,12 @@
 
 
 <main class="till-container">
-    <div class="till">
-        <h2>Tytuł</h2>
-        <article>
-
-        </article>
-    </div>
+    
+   
+    
     @Html.Action("GetPanel","Metrics")
-    <div class="till">
-        <h2>Tytuł</h2>
-        <article></article>
-    </div>
-    <div class="till">
-        <h2>Tytuł</h2>
-        <article></article>
-    </div>
+
+    @Html.Action("GetPanel","Diets")
+
+    @Html.Action("GetPanel", "UserMeals")
 </main>

@@ -1,0 +1,12 @@
+﻿@model List<Meals>
+
+<select name="MealId">
+    <option value="0">--Wybierz produkt --</option>
+    @if (Model.Any())
+    {
+        foreach (var meal in Model)
+        {
+            <option value="@meal.Id">@meal.Name</option>
+        }
+    }
+</select>

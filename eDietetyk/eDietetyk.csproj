@@ -182,8 +182,11 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MealsController.cs" />
+    <Compile Include="Controllers\UserMealsController.cs" />
     <Compile Include="Controllers\MetricsController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -216,10 +219,14 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DietsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Metrics\MetricsViewModel.cs" />
+    <Compile Include="Models\UserMealsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DietsServices.cs" />
+    <Compile Include="Services\MealsServices.cs" />
+    <Compile Include="Services\UserMealsServices.cs" />
     <Compile Include="Services\MetricsServices.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserMeals.cs">
@@ -233,6 +240,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="App_Data\db.sql" />
+    <Content Include="Content\images\loginlogo.png" />
     <Content Include="EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntityModel.edmx</DependentUpon>
@@ -303,6 +311,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Metrics\Panel.cshtml" />
     <Content Include="Views\Metrics\Add.cshtml" />
+    <Content Include="Views\UserMeals\Panel.cshtml" />
+    <Content Include="Views\UserMeals\Add.cshtml" />
+    <Content Include="Views\Meals\GetMeals.cshtml" />
+    <Content Include="Views\Diets\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
