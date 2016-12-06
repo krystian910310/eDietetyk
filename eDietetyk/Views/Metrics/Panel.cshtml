@@ -1,11 +1,12 @@
 ﻿@model Metrics
 
-<div class="till">
-    <h2>Twoja metryka</h2>
+<div class="till" id="metrics">
+    <h2>Metryka</h2>
     <article>
-        <div>
-            <label>Wzrost</label><span>@Model.Height</span>
-        </div>
+        <img src="~/Content/images/human-body.png" />
+
+            <span id="metrics-height">@Model.Height</span>
+
         <div>
             <label>Waga</label><span>@Model.Weight</span>
         </div>

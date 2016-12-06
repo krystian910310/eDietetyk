@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#004050;
+    background-color: #004050;
 }
 
 .body-content {
@@ -20,20 +20,53 @@ textarea {
     max-width: 280px;
 }
 
-main .till{
+main .till {
     width: 30%;
-    min-width:300px;
+    min-width: 300px;
     margin: 1.5%;
     float: left;
-    background-color:#fff;
+    background-color: #fff;
 }
 
-.form-control.input-validation-error{
-    border-color:red;
+.till h2 {
+    margin-left: 5px;
+    padding-left: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-size: 60px 60px;
 }
 
-.login-section{
-    background-color:#fff;
+.till#metrics h2 {
+    background: url('images/metryki.png') no-repeat;
+    background-size: 60px 60px;
+}
+
+.till#metrics article {
+    position: relative;
+    text-align:center;
+}
+
+.till#metrics article img {
+    margin-top:20px;
+    height:250px;
+}
+
+.till#diets h2 {
+    background: url('images/dieta.png') no-repeat;
+    background-size: 60px 60px;
+}
+
+.till#meals h2 {
+    background: url('images/posilki.png') no-repeat;
+    background-size: 60px 60px;
+}
+
+.form-control.input-validation-error {
+    border-color: red;
+}
+
+.login-section {
+    background-color: #fff;
     vertical-align: middle;
 }
 
@@ -157,23 +190,22 @@ body, html {
     transition: all 0.218s;
 }
 
-.btn.btn-signin:hover,
-.btn.btn-signin:active,
-.btn.btn-signin:focus {
-    background-color: rgb(12, 97, 33);
-}
+    .btn.btn-signin:hover,
+    .btn.btn-signin:active,
+    .btn.btn-signin:focus {
+        background-color: rgb(12, 97, 33);
+    }
 
 .forgot-password {
     color: rgb(104, 145, 162);
 }
 
-.forgot-password:hover,
-.forgot-password:active,
-.forgot-password:focus{
-    color: rgb(12, 97, 33);
-}
+    .forgot-password:hover,
+    .forgot-password:active,
+    .forgot-password:focus {
+        color: rgb(12, 97, 33);
+    }
 
-#register-link{
-    float:right;
+#register-link {
+    float: right;
 }
-
