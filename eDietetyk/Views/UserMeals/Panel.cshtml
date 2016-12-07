@@ -3,32 +3,25 @@
 <div class="till" id="meals">
     <h2>Twoje posiłki</h2>
     <article>
-        <table class="table">
-            <tr>
-                <th>
-                    Nazwa
-                </th>
-                <th>
-                   Data dodania
-                </th>
-            </tr>
-
-            @if (Model.Any())
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
             {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @item.Meals.Name
-                        </td>
-                        <td>
-                            @item.CreateDate.ToShortTimeString()
-                        </td>
-                    </tr>
-                }
+                <div class="meal">
+                    <div class="meal-title">
+                        <div class="col-sm-9">@item.Meals.Name</div>
+                        <div class="col-sm-3">@item.CreateDate.ToShortTimeString()</div>
+                    </div>
+                    <div class="meal-summary">
+                        <div class="col-sm-3"><b>@(item.Weight)g</b></div>
+                        <div class="col-sm-3 protein"><i></i><span>13g</span></div>
+                        <div class="col-sm-3 fat"><i></i><span>5g</span></div>
+                        <div class="col-sm-3 sugar"><i></i><span>30g</span></div>
+                    </div>
+                </div>
             }
+        }
 
-        </table>
     </article>
     <aside>
         <a href="/UserMeals/Add" class="btn btn-primary">Dodaj</a>

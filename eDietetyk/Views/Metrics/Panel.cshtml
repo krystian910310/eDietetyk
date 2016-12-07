@@ -3,27 +3,45 @@
 <div class="till" id="metrics">
     <h2>Metryka</h2>
     <article>
-        <img src="~/Content/images/human-body.png" />
+        <div class="col-sm-8">
+            <label>Wzrost:</label>
+        </div>
+        <div class="col-sm-4"><span>@(Model.Height.ToString())cm</span></div>
 
-            <span id="metrics-height">@Model.Height</span>
+        <div class="col-sm-8">
+            <label>Waga:</label>
+        </div>
+        <div class="col-sm-4"><span>@(Model.Weight.ToString("###,#"))kg</span></div>
 
-        <div>
-            <label>Waga</label><span>@Model.Weight</span>
+        <div class="col-sm-8">
+            <label>Obwód w pasie:</label>
         </div>
-        <div>
-            <label>Obwód w pasie</label><span>@Model.Waist</span>
+        <div class="col-sm-4"><span>@(Model.Waist.ToString())cm</span></div>
+
+        <div class="col-sm-8">
+            <label>Obwód uda:</label>
         </div>
-        <div>
-            <label>Obwód ud</label><span>@Model.Thigh</span>
+        <div class="col-sm-4"><span>@(Model.Thigh.ToString())cm</span></div>
+
+        <div class="col-sm-8">
+            <label>Obwód ramion:</label>
         </div>
-        <div>
-            <label>Obwód ramion</label><span>@Model.Arm</span>
+        <div class="col-sm-4"><span>@(Model.Arm.ToString())cm</span></div>
+
+        <div class="col-sm-8">
+            <label>Obwód w klatce piersiowej:</label>
         </div>
-        <div>
-            <label>Obwód w klatce piersiowej</label><span>@Model.Chest</span>
-        </div>
+        <div class="col-sm-4"><span>@(Model.Chest.ToString())cm</span></div>
+
     </article>
     <aside>
-        <a href="/Metrics/Add" class="btn btn-primary">Dodaj</a>
+        <div class="col-sm-4">Ostatnia zmiana:</div>
+        <div class="col-sm-4">
+            <div><span>@Model.CreateDate.ToShortDateString()</span></div>
+            <div><span>@Model.CreateDate.ToShortTimeString()</span></div>
+        </div>
+        <div class="col-sm-4">
+            <a href="/Metrics/Add" class="btn btn-primary">Dodaj</a>
+        </div>
     </aside>
 </div>
