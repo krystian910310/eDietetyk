@@ -25,6 +25,9 @@ namespace eDietetyk
         public int Calories { get; set; }
         public string Description { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public Nullable<int> Protein { get; set; }
+        public Nullable<int> Sugar { get; set; }
+        public Nullable<int> Fat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserMeals> UserMeals { get; set; }

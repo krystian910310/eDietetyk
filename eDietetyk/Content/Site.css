@@ -58,17 +58,34 @@ body, html {
         overflow: auto;
     }
 
-        .till#metrics article div.col-sm-8 {
-            text-align: right;
-            padding-right: 0;
+        .till#metrics article .item {
+            overflow: auto;
         }
 
-        .till#metrics article div.col-sm-4 {
-            text-align: left;
+        .till#metrics article .title {
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
+
+        .till#metrics article .title .target {
+                height: 50px;
+            }
+
+            .till#metrics article .title .target:before {
+                content: ' ';
+                background-image: url('images/target.png');
+                background-position: center;
+                background-size: contain;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                background-repeat:no-repeat;
+            }
 
     .till#metrics aside {
         padding-top: 5px;
+        overflow: auto;
     }
 
 
@@ -90,11 +107,11 @@ body, html {
         overflow: auto;
         padding: 5px 0px;
         background-color: gainsboro;
-        margin:10px 0px;
+        margin: 10px 0px;
     }
 
     .till#meals div.meal-title {
-        font-size:16px;
+        font-size: 16px;
     }
 
     .till#meals div.meal-summary > div {
@@ -268,4 +285,25 @@ body, html {
 
 #register-link {
     float: right;
+}
+
+
+/****************** Domyślny formularz ****************************/
+
+.form {
+    background-color: #F7F7F7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-container.form {
+    max-width: 400px;
+    padding: 40px 40px;
 }

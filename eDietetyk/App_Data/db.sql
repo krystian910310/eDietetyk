@@ -49,6 +49,12 @@ create table dbo.Meals
 
 GO
 
+alter table dbo.Meals add Protein int null;
+alter table dbo.Meals add Sugar int null;
+alter table dbo.Meals add Fat int null;
+
+GO
+
 create table dbo.UserMeals
 (
 	Id int identity(1,1) not null,

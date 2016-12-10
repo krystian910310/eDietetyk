@@ -222,6 +222,7 @@
     <Compile Include="Models\DietsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MetricsModel.cs" />
     <Compile Include="Models\UserMealsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DietsServices.cs" />
@@ -319,6 +320,7 @@
     <Content Include="Views\UserMeals\Add.cshtml" />
     <Content Include="Views\Meals\GetMeals.cshtml" />
     <Content Include="Views\Diets\Panel.cshtml" />
+    <Content Include="Views\Metrics\AddTarget.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

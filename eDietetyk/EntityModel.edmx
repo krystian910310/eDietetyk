@@ -84,6 +84,9 @@
           <Property Name="Calories" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Protein" Type="int" />
+          <Property Name="Sugar" Type="int" />
+          <Property Name="Fat" Type="int" />
         </EntityType>
         <EntityType Name="Metrics">
           <Key>
@@ -416,6 +419,9 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="Meals" ToRole="UserMeals" />
+          <Property Name="Protein" Type="Int32" />
+          <Property Name="Sugar" Type="Int32" />
+          <Property Name="Fat" Type="Int32" />
         </EntityType>
         <EntityType Name="Metrics">
           <Key>
@@ -622,6 +628,9 @@
           <EntitySetMapping Name="Meals">
             <EntityTypeMapping TypeName="Model.Meals">
               <MappingFragment StoreEntitySet="Meals">
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="Sugar" ColumnName="Sugar" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Calories" ColumnName="Calories" />

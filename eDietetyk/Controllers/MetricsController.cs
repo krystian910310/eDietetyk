@@ -1,4 +1,5 @@
-﻿using eDietetyk.Services;
+﻿using eDietetyk.Models;
+using eDietetyk.Services;
 using System.Web.Mvc;
 
 namespace eDietetyk.Controllers
@@ -46,8 +47,30 @@ namespace eDietetyk.Controllers
         [HttpPost]
         public ActionResult Add(Metrics data)
         {
-            _service.AddMetric(data, User.Identity.Name);
-            return RedirectToAction("Index", "Home");
+            var success = _service.AddMetric(data, User.Identity.Name);
+            if (success)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Errors = "Wprowadzono niepoprawną wartość";
+            return View(data);
+        }
+
+        public ActionResult AddTarget()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddTarget(Metrics data)
+        {
+            var success = _service.AddTarget(data, User.Identity.Name);
+            if (success)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Errors = "Wprowadzono niepoprawną wartość";
+            return View(data);
         }
     }
 }

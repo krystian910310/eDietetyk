@@ -8,7 +8,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4 class="text-center">Podaj metrykę:</h4>
+                <h4 class="text-center">Określ swoje cele:</h4>
                 <hr />
 
                 @if (!string.IsNullOrEmpty(ViewBag.Errors))
@@ -19,13 +19,6 @@
                         </p>
                     </div>
                 }
-
-                <div class="form-group">
-                    <label class="control-label col-md-7">Wzrost:</label>
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-7">Waga:</label>
@@ -77,3 +70,4 @@
 
     </div>
 </div>
+
