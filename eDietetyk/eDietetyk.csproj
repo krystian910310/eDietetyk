@@ -182,6 +182,7 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\NoDataModel.cs" />
     <Compile Include="Models\UserMealsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ChartServices.cs" />
     <Compile Include="Services\DietsServices.cs" />
     <Compile Include="Services\MealsServices.cs" />
     <Compile Include="Services\UserMealsServices.cs" />
@@ -323,6 +325,7 @@
     <Content Include="Views\Diets\Panel.cshtml" />
     <Content Include="Views\Metrics\AddTarget.cshtml" />
     <Content Include="Views\Shared\_NoData.cshtml" />
+    <Content Include="Views\Chart\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -51,15 +51,28 @@ namespace eDietetyk.Services
             var caroriesDemand = 0.0;
             if (current.IdUser == "woman")
             {
-                caroriesDemand = 655.0 + (9.6 * (double)current.Weight) +(1.85 * (double)current.Height);
-                caroriesDemand -= (4.7 * 25.0);
+                caroriesDemand = (655.0 + (9.6 * (double)current.Weight) + (1.85 * (double)current.Height) - (4.7 * 25.0)) * 1.2;
             } else
             {
-                caroriesDemand = 66.5 + (13.7 * (double)current.Weight) +(5.0 * (double)current.Height);
-                caroriesDemand -= (6.8 * 25.0);
+                caroriesDemand = (66.5 + (13.7 * (double)current.Weight) +(5.0 * (double)current.Height) - (6.8 * 25.0)) * 1.2;
             }
-            caroriesDemand = caroriesDemand * 1.2;
+            if (current.Weight > target.Weight)
+            {
+                caroriesDemand = caroriesDemand * 0.9;
+            } else
+            {
+                caroriesDemand = caroriesDemand * 1.1;
+            }
             return Math.Round(caroriesDemand, 1).ToString();
+        }
+
+        private double CalculateCaloriesForTarget(int currentWeight, int targetWeight, double calories)
+        {
+            if(currentWeight > targetWeight)
+            {
+                
+            }
+            return 0.0;
         }
 
         private string CalculateBmi(Metrics current)
