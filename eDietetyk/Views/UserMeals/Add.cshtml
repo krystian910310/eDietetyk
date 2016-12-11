@@ -12,10 +12,10 @@
                 <hr />
 
                 <div class="form-group">
-                    <div class="col-md-12">
+                    <div class="col-md-12 ui-widget">
                         <input id="mealInput" placeholder="Wpisz nazwę produktu" type="text" class="form-control" />
                         <div id="meal-list"></div>
-                        <input type="hidden" value="" name="MealId" />
+                        <input id="MealId" type="hidden" value="" name="MealId" />
                     </div>
                 </div>
 
@@ -48,24 +48,41 @@
 </div>
 
 @section scripts{
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        
+
         $(document).ready(function () {
             var timer;
-            $('#mealInput').keyup(function () {
-                clearTimeout(timer);
-                timer = setTimeout(function () {
+
+            $("#mealInput").autocomplete({
+                source: function (request, response) {
                     $.ajax({
                         dataType: "json",
                         url: "/Meals/GetMeals",
                         data: {
-                            key: $('#mealInput').val()
+                            key: request.term
                         },
-                        success: loadData
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Value,
+                                    value: item.Key
+                                }
+                            }));
+                        }
                     });
-                }, 1000);
+                },
+                minLength: 4,
+
+                select: function (event, ui) {
+                    $('#mealInput').val(ui.item.label);
+                    $('#MealId').val(ui.item.value);
+                    return false;
+                    
+                }
             });
+
         })
 
         function loadData(data) {
@@ -73,7 +90,7 @@
                 var container = $('#meal-list');
 
                 [].forEach.call(data, function (meal) {
-                    
+
                     var div = document.createElement('div');
                     div.setAttribute('class', 'meal-list-item');
                     div.setAttribute('data-val', meal.Key);
