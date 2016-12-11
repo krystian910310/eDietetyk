@@ -67,21 +67,21 @@ body, html {
             padding-bottom: 5px;
         }
 
-        .till#metrics article .title .target {
+            .till#metrics article .title .target {
                 height: 50px;
             }
 
-            .till#metrics article .title .target:before {
-                content: ' ';
-                background-image: url('images/target.png');
-                background-position: center;
-                background-size: contain;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                background-repeat:no-repeat;
-            }
+                .till#metrics article .title .target:before {
+                    content: ' ';
+                    background-image: url('images/target.png');
+                    background-position: center;
+                    background-size: contain;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    background-repeat: no-repeat;
+                }
 
     .till#metrics aside {
         padding-top: 5px;
@@ -306,4 +306,21 @@ body, html {
 .form-container.form {
     max-width: 400px;
     padding: 40px 40px;
+}
+
+
+/******************* Brak danych ************************************/
+
+div.nodata-container .img{
+    width: 100%;
+    height: 100%;
+    background: url('images/brakdanych.png') no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height:120px;
+}
+
+div.nodata-container p{
+   font-weight: bold;
+   text-align:center;
 }

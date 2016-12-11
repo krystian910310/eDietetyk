@@ -2,7 +2,9 @@
 {
     public class DietsViewModel
     {
-        public int TargetCalories { get; set; }
-        public int CurrentCalories { get; set; }
+        public bool IsData { get; set; }
+        public string TargetCalories { get; set; }
+        public string CurrentCalories { get; set; }
+        public string Bmi { get; set; }
     }
 }

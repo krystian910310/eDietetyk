@@ -36,7 +36,8 @@ namespace eDietetyk.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
-            return View();
+            var model = _service.GetMetricsToAdd(User.Identity.Name);
+            return View(model);
         }
 
         /// <summary>
@@ -58,7 +59,8 @@ namespace eDietetyk.Controllers
 
         public ActionResult AddTarget()
         {
-            return View();
+            var model = _service.GetTargetToAdd(User.Identity.Name);
+            return View(model);
         }
 
         [HttpPost]

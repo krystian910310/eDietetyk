@@ -4,11 +4,15 @@
     <article>
         <p>
             <label>Kalorie zalecane na dziś</label>
-            <span>@(Model.TargetCalories)kcal</span>
+            <span>@(Model.TargetCalories) kcal</span>
         </p>
         <p>
             <label>Kalorie spożyte: </label>
-            <span>@(Model.CurrentCalories)kcal</span>
+            <span>@(Model.CurrentCalories) kcal</span>
+        </p>
+        <p>
+            <label>Twoje BMI: </label>
+            <span>@(Model.Bmi) </span>
         </p>
     </article>
 </div>

@@ -3,80 +3,91 @@
 <div class="till" id="metrics">
     <h2>Metryka</h2>
     <article class="text-center">
-
-        <div class="item title">
-            <div class="col-sm-3 current">
-                <div>@Model.Current.CreateDate.ToString("dd-MM")</div>
-                <div>@Model.Current.CreateDate.Year</div>
-            </div>
-            <div class="col-sm-6">
-                <label class="control-label"></label>
-            </div>
-            <div class="col-sm-3 target"></div>
-        </div>
-
-        <div class="item">
-            <div class="col-sm-3"><span>@(Model.Current.Height.ToString())cm</span></div>
-            <div class="col-sm-6">
-                <label class="control-label">- Wzrost -</label>
-            </div>
-            <div class="col-sm-3"><span> -- </span></div>
-        </div>
-
-        <div class="item">
-            <div class="col-sm-3"><span>@(Model.Current.Weight.ToString("###,#"))kg</span></div>
-            <div class="col-sm-6">
-                <label class="control-label">- Waga -</label>
-            </div>
-            <div class="col-sm-3"><span>@(Model.Target.Weight.ToString("###,#"))kg</span></div>
-        </div>
-
-
-        @if (Model.Current.Waist.HasValue)
+        @if (Model.Current == null || Model.Target == null)
         {
-            <div class="item">
-                <div class="col-sm-3"><span>@(Model.Current.Waist.ToString())cm</span></div>
-                <div class="col-sm-6">
-                    <label class="control-label">- Obwód w pasie -</label>
-                </div>
-                <div class="col-sm-3"><span>@(Model.Target.Waist.ToString())cm</span></div>
-            </div>
-        }
+            string message = Model.Current == null && Model.Target == null ? "Podaj swoją początkową metrykę i twoje cele" : Model.Current == null ? "Podaj swoją początkową metrykę" : "Podaj swoje cele";
 
-        @if (Model.Current.Thigh.HasValue)
+            <text>
+                @Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message =  message})
+            </text>
+        }
+        else
         {
-            <div class="item">
-                <div class="col-sm-3"><span>@(Model.Current.Thigh.ToString())cm</span></div>
-                <div class="col-sm-6">
-                    <label class="control-label">- Obwód uda -</label>
+
+
+            <div class="item title">
+                <div class="col-sm-3 current">
+                    <div>@Model.Current.CreateDate.ToString("dd-MM")</div>
+                    <div>@Model.Current.CreateDate.Year</div>
                 </div>
-                <div class="col-sm-3"><span>@(Model.Target.Thigh.ToString())cm</span></div>
-            </div>
-        }
-
-        @if (Model.Current.Arm.HasValue)
-        {
-            <div class="item">
-                <div class="col-sm-3"><span>@(Model.Current.Arm.ToString())cm</span></div>
                 <div class="col-sm-6">
-                    <label class="control-label">- Obwód ramion -</label>
+                    <label class="control-label"></label>
                 </div>
-                <div class="col-sm-3"><span>@(Model.Target.Arm.ToString())cm</span></div>
+                <div class="col-sm-3 target"></div>
             </div>
-        }
 
-        @if (Model.Current.Chest.HasValue)
-        {
             <div class="item">
-                <div class="col-sm-3"><span>@(Model.Current.Chest.ToString())cm</span></div>
+                <div class="col-sm-3"><span>@(Model.Current.Height.ToString())cm</span></div>
                 <div class="col-sm-6">
-                    <label class="control-label">- Klatka piersiowa -</label>
+                    <label class="control-label">- Wzrost -</label>
                 </div>
-                <div class="col-sm-3"><span>@(Model.Target.Chest.ToString())cm</span></div>
+                <div class="col-sm-3"><span> -- </span></div>
             </div>
+
+            <div class="item">
+                <div class="col-sm-3"><span>@(Model.Current.Weight.ToString("###,#"))kg</span></div>
+                <div class="col-sm-6">
+                    <label class="control-label">- Waga -</label>
+                </div>
+                <div class="col-sm-3"><span>@(Model.Target.Weight.ToString("###,#"))kg</span></div>
+            </div>
+
+
+            if (Model.Current.Waist.HasValue)
+            {
+                <div class="item">
+                    <div class="col-sm-3"><span>@(Model.Current.Waist.ToString())cm</span></div>
+                    <div class="col-sm-6">
+                        <label class="control-label">- Obwód w pasie -</label>
+                    </div>
+                    <div class="col-sm-3"><span>@(Model.Target.Waist.ToString())cm</span></div>
+                </div>
+            }
+
+            if (Model.Current.Thigh.HasValue)
+            {
+                <div class="item">
+                    <div class="col-sm-3"><span>@(Model.Current.Thigh.ToString())cm</span></div>
+                    <div class="col-sm-6">
+                        <label class="control-label">- Obwód uda -</label>
+                    </div>
+                    <div class="col-sm-3"><span>@(Model.Target.Thigh.ToString())cm</span></div>
+                </div>
+            }
+
+            if (Model.Current.Arm.HasValue)
+            {
+                <div class="item">
+                    <div class="col-sm-3"><span>@(Model.Current.Arm.ToString())cm</span></div>
+                    <div class="col-sm-6">
+                        <label class="control-label">- Obwód ramion -</label>
+                    </div>
+                    <div class="col-sm-3"><span>@(Model.Target.Arm.ToString())cm</span></div>
+                </div>
+            }
+
+            if (Model.Current.Chest.HasValue)
+            {
+                <div class="item">
+                    <div class="col-sm-3"><span>@(Model.Current.Chest.ToString())cm</span></div>
+                    <div class="col-sm-6">
+                        <label class="control-label">- Klatka piersiowa -</label>
+                    </div>
+                    <div class="col-sm-3"><span>@(Model.Target.Chest.ToString())cm</span></div>
+                </div>
+            }
+
         }
-
-
     </article>
     <aside>
         <div class="col-sm-4"><a href="/Metrics/Add" class="btn btn-primary">Dodaj</a></div>

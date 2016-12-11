@@ -14,16 +14,22 @@
                     </div>
                     <div class="meal-summary">
                         <div class="col-sm-3"><b>@(item.Weight)g</b></div>
-                        <div class="col-sm-3 protein"><i></i><span>13g</span></div>
-                        <div class="col-sm-3 fat"><i></i><span>5g</span></div>
-                        <div class="col-sm-3 sugar"><i></i><span>30g</span></div>
+                        <div class="col-sm-3 protein"><i></i><span>@(item.Meals.Protein)g</span></div>
+                        <div class="col-sm-3 fat"><i></i><span>@(item.Meals.Fat)g</span></div>
+                        <div class="col-sm-3 sugar"><i></i><span>@(item.Meals.Sugar)g</span></div>
                     </div>
                 </div>
             }
         }
+        else
+        {
+            <text>
+                @Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = "Podaj co dzisiaj zjadłeś." })
+            </text>
+        }
 
     </article>
-    <aside>
+    <aside class="text-center">
         <a href="/UserMeals/Add" class="btn btn-primary">Dodaj</a>
     </aside>
 </div>

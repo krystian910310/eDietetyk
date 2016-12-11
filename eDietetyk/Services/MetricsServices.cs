@@ -35,10 +35,47 @@ namespace eDietetyk.Services
 
             var result = new MetricsModel
             {
-                Current = current ?? new Metrics(),
-                Target = target ?? new Metrics()
+                Current = current,
+                Target = target
             };
             return result;
+        }
+
+        public Metrics GetMetricsToAdd(string userName)
+        {
+            var user = db.AspNetUsers.First(x => x.UserName == userName);
+            var current = db.Metrics.Where(x => x.IdUser == user.Id && x.IsTarget == false).OrderByDescending(x => x.CreateDate).FirstOrDefault();
+
+            if (current == null)
+            {
+                current = new Metrics
+                {
+                    Height = 170,
+                    Weight = 75
+                };
+            }
+
+            return current;
+        }
+
+        public Metrics GetTargetToAdd(string userName)
+        {
+            var currentMetrics = GetCurrentMetric(userName);
+
+            if (currentMetrics.Target == null)
+            {
+                if(currentMetrics.Current != null)
+                {
+                    return currentMetrics.Current;
+                }
+                return new Metrics
+                {
+                    Height = 175,
+                    Weight = 75
+                };
+            }
+
+            return currentMetrics.Target;
         }
 
         /// <summary>
