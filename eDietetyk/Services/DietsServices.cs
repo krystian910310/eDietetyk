@@ -53,9 +53,8 @@ namespace eDietetyk.Services
 
         private string CalculateBmi(Metrics current)
         {
-            //TODO Bmi użytkownika
-
-            return "2,5";
+            var bmi = (double)current.Weight / (current.Height/100.0 * current.Height/100.0);
+            return Math.Round(bmi, 2).ToString();
         }
     }
 }
