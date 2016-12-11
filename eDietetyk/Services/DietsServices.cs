@@ -46,16 +46,26 @@ namespace eDietetyk.Services
 
         private string CalculateTargetCalories(Metrics current, Metrics target)
         {
-            //TODO obliczyć ilość kalorii jaką powinien przyjmować user żeby osiągnąć odpowdnią wagę
+            //TODO ŁK: change 25 to real age, change if statement to real sex value, get activity (1.2) from real data.
 
-            return "2300";
+            var caroriesDemand = 0.0;
+            if (current.IdUser == "woman")
+            {
+                caroriesDemand = 655.0 + (9.6 * (double)current.Weight) +(1.85 * (double)current.Height);
+                caroriesDemand -= (4.7 * 25.0);
+            } else
+            {
+                caroriesDemand = 66.5 + (13.7 * (double)current.Weight) +(5.0 * (double)current.Height);
+                caroriesDemand -= (6.8 * 25.0);
+            }
+            caroriesDemand = caroriesDemand * 1.2;
+            return Math.Round(caroriesDemand, 1).ToString();
         }
 
         private string CalculateBmi(Metrics current)
         {
-            //TODO Bmi użytkownika
-
-            return "2,3";
+            var bmi = (double)current.Weight / (current.Height/100.0 * current.Height/100.0);
+            return Math.Round(bmi, 2).ToString();
         }
     }
 }
