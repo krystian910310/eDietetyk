@@ -20,9 +20,13 @@ namespace eDietetyk.Services
             db = new EfContext();
         }
 
-        public List<Meals> GetMealsByName(string name)
+        public List<KeyValuePair<int,string>> GetMealsByName(string key)
         {
-            var result = db.Meals.ToList();
+            var result = db.Meals
+                .Where(x=>x.Name.Contains(key))
+                .ToList()
+                .ToDictionary(item => item.Id, item => item.Name)
+                .ToList();
             return result;
         }
 

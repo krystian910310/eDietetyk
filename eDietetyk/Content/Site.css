@@ -96,6 +96,10 @@ body, html {
         background-size: 60px 60px;
     }
 
+    .till#diets .empty{
+        background: url('images/dieta-brakdanych.png');
+    }
+
     /******************* Kafelek POSIŁKÓW **********************/
 
     .till#meals h2 {
