@@ -2,17 +2,24 @@
 <div class="till" id="diets">
     <h2>Dieta</h2>
     <article>
-        <p>
-            <label>Kalorie zalecane na dziś</label>
-            <span>@(Model.TargetCalories) kcal</span>
-        </p>
-        <p>
-            <label>Kalorie spożyte: </label>
-            <span>@(Model.CurrentCalories) kcal</span>
-        </p>
-        <p>
-            <label>Twoje BMI: </label>
-            <span>@(Model.Bmi) </span>
-        </p>
+        @if (Model.IsData)
+        {
+            <p>
+                <label>Kalorie zalecane na dziś</label>
+                <span>@(Model.TargetCalories) kcal</span>
+            </p>
+            <p>
+                <label>Kalorie spożyte: </label>
+                <span>@(Model.CurrentCalories) kcal</span>
+            </p>
+            <p>
+                <label>Twoje BMI: </label>
+                <span>@(Model.Bmi) </span>
+            </p>
+        }
+        else
+        {
+                <text>@Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = "Aby uzyskać informacje na temat diety, uzupełnij matrykę oraz zdefiniuj cele" })</text>
+        }
     </article>
 </div>

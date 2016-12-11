@@ -1,6 +1,6 @@
 ﻿@model List<Meals>
 
-<select name="MealId">
+<select name="MealId" class="form-control">
     <option value="0">--Wybierz produkt --</option>
     @if (Model.Any())
     {
@@ -10,3 +10,6 @@
         }
     }
 </select>
+
+<input id="mealCmb" placeholder="Wpisz nazwę produktu" type="text" class="form-control" />
+<input type="hidden" value="" name="MealId" />

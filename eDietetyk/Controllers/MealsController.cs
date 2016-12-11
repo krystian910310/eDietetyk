@@ -1,8 +1,5 @@
 ﻿using eDietetyk.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace eDietetyk.Controllers
@@ -14,11 +11,11 @@ namespace eDietetyk.Controllers
         {
             _services = new MealsServices();
         }
-        // GET: Meals
-        public ActionResult GetMeals()
+
+        public ActionResult GetMeals(string key)
         {
-            var result = _services.GetMealsByName(string.Empty);
-            return PartialView(result);
+            var result = _services.GetMealsByName(key);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
