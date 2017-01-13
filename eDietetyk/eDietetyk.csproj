@@ -182,6 +182,7 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\TargetController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

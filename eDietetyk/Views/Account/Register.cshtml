@@ -11,7 +11,7 @@
         {
             @Html.AntiForgeryToken()
             <span id="reauth-email" class="reauth-email"></span>
-            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", id = "inputEmail", placeholder = "Adres email", type = "email", required = "", autofocus = "" })
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", id = "inputEmail", placeholder = "Adres email", type = "email", required = "asdasd", autofocus = "" })
             @Html.PasswordFor(x => x.Password, new { @class = "form-control inputPassword", placeholder = "Hasło", required = "" })
             @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control inputPassword", placeholder = "Powtórz hasło", required = "" })
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Zarejestruj się</button>
