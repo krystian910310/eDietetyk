@@ -1,21 +1,25 @@
-﻿@model eDietetyk.Models.DietsViewModel
+﻿@using System.Globalization
+@model eDietetyk.Models.DietsViewModel
 <div class="till" id="diets">
     <h2>Dieta</h2>
     <article>
         @if (Model.IsData)
         {
+            <span>@Model.Info.</span>
+            <br/><br/>
             <p>
-                <label>Kalorie zalecane na dziś</label>
+                <label>Twoje BMI: </label>
+                <span>@Model.Bmi.ToString(CultureInfo.InvariantCulture) - @Model.BmiInfo</span>
+            </p>
+            <p>
+                <label>Kalorie zalecane na dziś:</label>
                 <span>@(Model.TargetCalories) kcal</span>
             </p>
             <p>
                 <label>Kalorie spożyte: </label>
                 <span>@(Model.CurrentCalories) kcal</span>
             </p>
-            <p>
-                <label>Twoje BMI: </label>
-                <span>@(Model.Bmi) </span>
-            </p>
+            
         }
         else
         {

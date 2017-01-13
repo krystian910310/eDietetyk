@@ -245,11 +245,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="App_Data\db.sql" />
+    <Content Include="Content\images\bialko.png" />
+    <Content Include="Content\images\brakdanych.png" />
+    <Content Include="Content\images\cukier.png" />
     <Content Include="Content\images\dieta.png" />
     <Content Include="Content\images\loginlogo.png" />
     <Content Include="Content\images\metryki.png" />
     <Content Include="Content\images\posilki.png" />
     <Content Include="Content\images\progres.png" />
+    <Content Include="Content\images\target.png" />
+    <Content Include="Content\images\tluszcz.png" />
     <Content Include="EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntityModel.edmx</DependentUpon>
@@ -324,9 +329,10 @@
     <Content Include="Views\UserMeals\Add.cshtml" />
     <Content Include="Views\Meals\GetMeals.cshtml" />
     <Content Include="Views\Diets\Panel.cshtml" />
-    <Content Include="Views\Metrics\AddTarget.cshtml" />
+    <Content Include="Views\Target\Add.cshtml" />
     <Content Include="Views\Shared\_NoData.cshtml" />
     <Content Include="Views\Chart\Panel.cshtml" />
+    <Content Include="Views\Target\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

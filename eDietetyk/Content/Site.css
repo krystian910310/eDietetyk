@@ -62,32 +62,38 @@ body, html {
             overflow: auto;
         }
 
-        .till#metrics article .title {
-            padding-top: 5px;
-            padding-bottom: 5px;
+        .till#metrics article .item > div:first-of-type {
+            text-align: right;
         }
 
-            .till#metrics article .title .target {
-                height: 50px;
-            }
+        .till#metrics article .item > div:last-of-type {
+            text-align: left;
+        }
 
-                .till#metrics article .title .target:before {
-                    content: ' ';
-                    background-image: url('images/target.png');
-                    background-position: center;
-                    background-size: contain;
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    left: 0;
-                    background-repeat: no-repeat;
-                }
+        
+     /******************* Kafelek CELÓW **********************/
 
-    .till#metrics aside {
-        padding-top: 5px;
+    .till#target h2 {
+        background: url('images/target.png') no-repeat;
+        background-size: 60px 60px;
+    }
+
+     .till#target article {
+        position: relative;
         overflow: auto;
     }
 
+        .till#target article .item {
+            overflow: auto;
+        }
+
+        .till#target article .item > div:first-of-type {
+            text-align: right;
+        }
+
+        .till#target article .item > div:last-of-type {
+            text-align: left;
+        }
 
     /******************* Kafelek DIETY **********************/
 
@@ -98,6 +104,13 @@ body, html {
 
     .till#diets .empty{
         background: url('images/dieta-brakdanych.png');
+    }
+
+    /******************* Kafelek POSTĘPÓW **********************/
+
+    .till#progress h2 {
+        background: url('images/progres.png') no-repeat;
+        background-size: 60px 60px;
     }
 
     /******************* Kafelek POSIŁKÓW **********************/

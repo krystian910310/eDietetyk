@@ -1,11 +1,11 @@
 ﻿@model Metrics
 
-<div class="till" id="metrics">
-    <h2>Metryka</h2>
+<div class="till" id="target">
+    <h2>Cele</h2>
     <article class="text-center">
         @if (Model == null)
         {
-            string message = "Podaj swoją początkową metrykę";
+            string message =  "Podaj swoje cele";
 
             <text>
                 @Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message =  message})
@@ -13,15 +13,6 @@
         }
         else
         {
-            <div class="item">
-                <div class="col-sm-6">
-                    <label class="control-label">Wzrost:</label>
-                </div>
-                <div class="col-sm-6">
-                    <span>@(Model.Height.ToString()) cm</span>
-                </div>
-            </div>
-
             <div class="item">
                 <div class="col-sm-6">
                     <label class="control-label">Waga:</label>
@@ -79,16 +70,15 @@
                 </div>
             }
 
-            <br/>
+            <br />
             <div class="item text-center">
-                <span>Ostatnia zmiana: @Model.CreateDate.ToString("dd.MM.yyyy")</span>
+                <span>Cele zdefiniowano: @Model.CreateDate.ToString("dd.MM.yyyy")</span>
 
             </div>
 
         }
     </article>
-
     <aside class="text-center">
-        <a href="/Metrics/Add" class="btn btn-primary">@(Model == null ? "Dodaj" : "Wprowadź aktualną metrykę")</a>
+        <a href="/Target/Add" class="btn btn-primary">@(Model==null? "Dodaj": "Zmień")</a>
     </aside>
 </div>

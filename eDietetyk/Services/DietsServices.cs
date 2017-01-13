@@ -28,7 +28,19 @@ namespace eDietetyk.Services
                 diet.CurrentCalories = CalculateCurrentCalories(userMeals);
                 diet.TargetCalories = CalculateTargetCalories(userMetrics, userTarget);
                 diet.Bmi = CalculateBmi(userMetrics);
+                diet.BmiInfo = GetBmiInfo(diet.Bmi);
                 diet.IsData = true;
+
+
+                if (userTarget.Weight < userMetrics.Height)
+                {
+                    diet.Info = "Aby osiągnąć założone cele, twoja dieta powinna być dietą odchudzającą";
+                }
+                else
+                {
+                    diet.Info = "Aby osiągnąć założone cele, twoja dieta powinna być dietą na zwiększenie masy";
+                }
+
             }
             else
             {
@@ -66,19 +78,39 @@ namespace eDietetyk.Services
             return Math.Round(caroriesDemand, 1).ToString();
         }
 
-        private double CalculateCaloriesForTarget(int currentWeight, int targetWeight, double calories)
-        {
-            if(currentWeight > targetWeight)
-            {
-                
-            }
-            return 0.0;
-        }
-
-        private string CalculateBmi(Metrics current)
+        private double CalculateBmi(Metrics current)
         {
             var bmi = (double)current.Weight / (current.Height/100.0 * current.Height/100.0);
-            return Math.Round(bmi, 2).ToString();
+            return Math.Round(bmi, 2);
+        }
+
+        private string GetBmiInfo(double bmi)
+        {
+            if (bmi <= 18)
+            {
+                return "niedowaga";
+            }
+            if (bmi > 18 && bmi <= 25)
+            {
+                return "waga prawidłowa";
+            }
+            if (bmi > 25 && bmi <= 30)
+            {
+                return "nadwaga";
+            }
+            if (bmi > 30 && bmi <= 35)
+            {
+                return "I stopień otyłości";
+            }
+            if (bmi > 35 && bmi <= 40)
+            {
+                return "II stopień otyłości";
+            }
+            if (bmi > 40)
+            {
+                return "otyłość skrajna";
+            }
+            return "";
         }
     }
 }

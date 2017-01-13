@@ -57,22 +57,6 @@ namespace eDietetyk.Controllers
             return View(data);
         }
 
-        public ActionResult AddTarget()
-        {
-            var model = _service.GetTargetToAdd(User.Identity.Name);
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult AddTarget(Metrics data)
-        {
-            var success = _service.AddTarget(data, User.Identity.Name);
-            if (success)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            ViewBag.Errors = "Wprowadzono niepoprawną wartość";
-            return View(data);
-        }
+        
     }
 }

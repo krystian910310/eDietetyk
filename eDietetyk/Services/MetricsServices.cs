@@ -27,18 +27,25 @@ namespace eDietetyk.Services
         /// </summary>
         /// <param name="userName">Nazwa użytkownika</param>
         /// <returns></returns>
-        public MetricsModel GetCurrentMetric(string userName)
+        public Metrics GetCurrentMetric(string userName)
         {
             var user = db.AspNetUsers.First(x => x.UserName == userName);
             var current = db.Metrics.Where(x => x.IdUser == user.Id && x.IsTarget==false).OrderByDescending(x => x.CreateDate).FirstOrDefault();
+            
+            return current;
+        }
+
+        /// <summary>
+        /// Pobiera aktualną metrykę użytkownika
+        /// </summary>
+        /// <param name="userName">Nazwa użytkownika</param>
+        /// <returns></returns>
+        public Metrics GetCurrentTarget(string userName)
+        {
+            var user = db.AspNetUsers.First(x => x.UserName == userName);
             var target = db.Metrics.Where(x => x.IdUser == user.Id && x.IsTarget == true).OrderByDescending(x => x.CreateDate).FirstOrDefault();
 
-            var result = new MetricsModel
-            {
-                Current = current,
-                Target = target
-            };
-            return result;
+            return target;
         }
 
         public Metrics GetMetricsToAdd(string userName)
@@ -60,13 +67,14 @@ namespace eDietetyk.Services
 
         public Metrics GetTargetToAdd(string userName)
         {
+            var target = GetCurrentTarget(userName);
             var currentMetrics = GetCurrentMetric(userName);
 
-            if (currentMetrics.Target == null)
+            if (target == null)
             {
-                if(currentMetrics.Current != null)
+                if(currentMetrics != null)
                 {
-                    return currentMetrics.Current;
+                    return currentMetrics;
                 }
                 return new Metrics
                 {
@@ -75,7 +83,7 @@ namespace eDietetyk.Services
                 };
             }
 
-            return currentMetrics.Target;
+            return target;
         }
 
         /// <summary>
