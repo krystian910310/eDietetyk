@@ -1,0 +1,84 @@
+﻿@model eDietetyk.Models.ProgressModel
+
+<div class="till" id="progress">
+    <h2>Postępy</h2>
+    <article>
+        @if (!Model.IsData)
+        {
+            string message = "Wykres z postępami dostępny po wprowadzeniu co najmniej 2 metryk";
+
+            <text>
+                @Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = message })
+            </text>
+        }
+        else
+        {
+            <p class="text-center">
+                Wykres zawiera dane z ostatnich 5 metryk
+            </p>
+            <div id="chart"></div>
+        }
+    </article>
+</div>
+
+<script>
+    var model = null;
+    var chartPunkty = null;
+
+    $(document)
+        .ready(function() {
+            model = @Html.Raw(Json.Encode(Model));
+            if(model.IsData){
+                CreateChar(model);
+            }
+
+        });
+
+    function CreateChar(model) {
+        var char = new Chartist.Line('#chart',
+        {
+            labels: model.Description,
+            series: [
+                model.Weight
+            ]
+        },
+        {
+            fullWidth: true,
+            chartPadding: {
+                right: 40,
+                bottom: 40
+            },
+            height: 200,
+            showArea: true,
+            plugins: [
+                Chartist.plugins.ctAxisTitle({
+                    axisX: {
+                        axisTitle: 'Data wprowadzenia metryki',
+                        axisClass: 'ct-axis-title',
+                        offset: {
+                            x: 0,
+                            y: 50
+                        },
+                        textAnchor: 'middle'
+                    },
+                    axisY: {
+                        axisTitle: 'Waga (w kilogramach)',
+                        axisClass: 'ct-axis-title',
+                        offset: {
+                            x: 0,
+                            y: -4
+                        },
+                        textAnchor: 'middle',
+                        flipTitle: false
+                    }
+                })
+            ]
+        });
+    }
+</script>
+<style>
+    .ct-label {
+        font-size: 12px;
+        color: black;
+    }
+</style>

@@ -1,4 +1,4 @@
-﻿@model eDietetyk.Metrics
+﻿@model Metrics
 
 <div class="container">
     <div class="form form-container">
@@ -58,9 +58,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-7">Obwód ramion:</label>
                     <div class="col-md-5">
-                        @Html.EditorFor(model => model.Arm, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Arm, new {htmlAttributes = new {@class = "form-control"}})
                     </div>
                 </div>
+
+                <p style=" font-size: 12px; color: #428BCA">* Wzrost i waga są polami wymaganymi.<br/>** Wypełniając kolejne pola możesz rejestrować zmiany innych partii swojego ciała oraz definiować dla nich cele.</p>
 
                 <div class="form-group">
                     <div class="col-md-6">

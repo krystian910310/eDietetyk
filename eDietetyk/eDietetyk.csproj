@@ -183,7 +183,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\TargetController.cs" />
-    <Compile Include="Controllers\ChartController.cs" />
+    <Compile Include="Controllers\ProgressController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -224,11 +224,11 @@
     <Compile Include="Models\DietsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MetricsModel.cs" />
+    <Compile Include="Models\ProgressModel.cs" />
     <Compile Include="Models\NoDataModel.cs" />
     <Compile Include="Models\UserMealsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ChartServices.cs" />
+    <Compile Include="Services\ProgressServices.cs" />
     <Compile Include="Services\DietsServices.cs" />
     <Compile Include="Services\MealsServices.cs" />
     <Compile Include="Services\UserMealsServices.cs" />
@@ -245,6 +245,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="App_Data\db.sql" />
+    <Content Include="Content\chartist-plugin-axistitle.min.js" />
+    <Content Include="Content\chartist.min.css" />
+    <Content Include="Content\chartist.min.js" />
     <Content Include="Content\images\bialko.png" />
     <Content Include="Content\images\brakdanych.png" />
     <Content Include="Content\images\cukier.png" />
@@ -277,6 +280,7 @@
     <Content Include="EntityModel.edmx.diagram">
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\chartist.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -331,7 +335,7 @@
     <Content Include="Views\Diets\Panel.cshtml" />
     <Content Include="Views\Target\Add.cshtml" />
     <Content Include="Views\Shared\_NoData.cshtml" />
-    <Content Include="Views\Chart\Panel.cshtml" />
+    <Content Include="Views\Progress\Panel.cshtml" />
     <Content Include="Views\Target\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup />

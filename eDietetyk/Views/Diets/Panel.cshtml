@@ -6,7 +6,7 @@
         @if (Model.IsData)
         {
             <span>@Model.Info.</span>
-            <br/><br/>
+            <br /><br />
             <p>
                 <label>Twoje BMI: </label>
                 <span>@Model.Bmi.ToString(CultureInfo.InvariantCulture) - @Model.BmiInfo</span>
@@ -16,14 +16,25 @@
                 <span>@(Model.TargetCalories) kcal</span>
             </p>
             <p>
-                <label>Kalorie spożyte: </label>
+                <label>Dzisiaj spożyłeś już: </label>
                 <span>@(Model.CurrentCalories) kcal</span>
             </p>
-            
+            <p>
+                <label>Możesz zjeść jeszcze: </label>
+                <span>@Model.LeftCalories kcal</span>
+            </p>
+
+            if (Model.IsExceededCalories)
+            {
+                <p class="text-center" style="color: red">
+                    <label>Przekroczyłeś dzienny limit kalorii!!!</label><br />
+                </p>
+            }
+
         }
         else
         {
-                <text>@Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = "Aby uzyskać informacje na temat diety, uzupełnij matrykę oraz zdefiniuj cele" })</text>
+            <text>@Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = "Aby uzyskać informacje na temat diety, uzupełnij matrykę oraz zdefiniuj cele" })</text>
         }
     </article>
 </div>

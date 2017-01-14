@@ -31,6 +31,16 @@ namespace eDietetyk.Services
                 diet.BmiInfo = GetBmiInfo(diet.Bmi);
                 diet.IsData = true;
 
+                var leftCalories = diet.TargetCalories - diet.CurrentCalories;
+                if (leftCalories < 0)
+                {
+                    diet.IsExceededCalories = true;
+                    diet.LeftCalories = 0;
+                }
+                else
+                {
+                    diet.LeftCalories = leftCalories;
+                }
 
                 if (userTarget.Weight < userMetrics.Height)
                 {
@@ -50,13 +60,13 @@ namespace eDietetyk.Services
             return diet;
         }
 
-        private string CalculateCurrentCalories(List<UserMeals> userMeals)
+        private int CalculateCurrentCalories(List<UserMeals> userMeals)
         {
             var calories = userMeals.Sum(x => (int)((x.Weight / 100.0) * x.Meals.Calories));
-            return calories.ToString();
+            return calories;
         }
 
-        private string CalculateTargetCalories(Metrics current, Metrics target)
+        private int CalculateTargetCalories(Metrics current, Metrics target)
         {
             //TODO ŁK: change 25 to real age, change if statement to real sex value, get activity (1.2) from real data.
 
@@ -75,7 +85,7 @@ namespace eDietetyk.Services
             {
                 caroriesDemand = caroriesDemand * 1.1;
             }
-            return Math.Round(caroriesDemand, 1).ToString();
+            return (int)caroriesDemand;
         }
 
         private double CalculateBmi(Metrics current)

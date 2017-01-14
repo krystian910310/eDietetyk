@@ -83,6 +83,14 @@ namespace eDietetyk.Services
                 };
             }
 
+            if (currentMetrics != null)
+            {
+                target.Arm = currentMetrics.Arm;
+                target.Chest = currentMetrics.Chest;
+                target.Waist = currentMetrics.Waist;
+                target.Thigh = currentMetrics.Thigh;
+            }
+
             return target;
         }
 
