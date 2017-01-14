@@ -33,7 +33,7 @@ namespace eDietetyk
         public virtual DbSet<Diets> Diets { get; set; }
         public virtual DbSet<Meals> Meals { get; set; }
         public virtual DbSet<Metrics> Metrics { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<UserMeals> UserMeals { get; set; }
-        public virtual DbSet<UsersInfo> UsersInfo { get; set; }
     }
 }

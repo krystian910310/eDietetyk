@@ -78,3 +78,19 @@ create table dbo.Diets
 	constraint [PK@Diets@Id] primary key (Id),
 	constraint [FK@Diets@Id@AspNetUsers@Id] foreign key(IdUser) references dbo.AspNetUsers (Id)
 )
+
+GO
+
+create table dbo.UserInfo
+(
+	Id int identity not null,
+	IdUser nvarchar(128) not null,
+	Name nvarchar(200) not null,
+	FirstName nvarchar(100)not null,
+	BirthDate datetime not null,
+	Activity int not null,
+	SexType int not null,
+	CreateDate DateTime not null constraint [DK@UserInfo@CreateDate] default  getdate(),
+	constraint [PK@UserInfo@Id] primary key (id),
+	constraint [FK@UserInfo@Id@AspNetUsers@Id] foreign key(IdUser) references dbo.AspNetUsers (Id)
+)

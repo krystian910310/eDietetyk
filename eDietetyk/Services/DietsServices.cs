@@ -22,11 +22,12 @@ namespace eDietetyk.Services
             var userMeals = user.UserMeals.Where(x => x.CreateDate.Year == day.Year && x.CreateDate.Month == day.Month && x.CreateDate.Day == day.Day).ToList();
             var userMetrics = user.Metrics.Where(x => x.IsTarget == false).OrderByDescending(x => x.CreateDate).FirstOrDefault();
             var userTarget = user.Metrics.Where(x => x.IsTarget == true).OrderByDescending(x => x.CreateDate).FirstOrDefault();
+            var userInfo = user.UserInfo.FirstOrDefault();
 
-            if (userMetrics != null && userTarget != null)
+            if (userMetrics != null && userTarget != null && userInfo!=null)
             {
                 diet.CurrentCalories = CalculateCurrentCalories(userMeals);
-                diet.TargetCalories = CalculateTargetCalories(userMetrics, userTarget);
+                diet.TargetCalories = CalculateTargetCalories(userMetrics, userTarget, userInfo);
                 diet.Bmi = CalculateBmi(userMetrics);
                 diet.BmiInfo = GetBmiInfo(diet.Bmi);
                 diet.IsData = true;
@@ -66,17 +67,19 @@ namespace eDietetyk.Services
             return calories;
         }
 
-        private int CalculateTargetCalories(Metrics current, Metrics target)
+        private int CalculateTargetCalories(Metrics current, Metrics target, UserInfo info)
         {
-            //TODO ŁK: change 25 to real age, change if statement to real sex value, get activity (1.2) from real data.
+            //TODO ŁK: change 25 to real age, , get activity (1.2) from real data.
 
             var caroriesDemand = 0.0;
-            if (current.IdUser == "woman")
+            double age = (int)(DateTime.Today - info.BirthDate).Days/365;
+            double activity = (double) info.Activity/10;
+            if (info.SexType==2)
             {
-                caroriesDemand = (655.0 + (9.6 * (double)current.Weight) + (1.85 * (double)current.Height) - (4.7 * 25.0)) * 1.2;
+                caroriesDemand = (655.0 + (9.6 * (double)current.Weight) + (1.85 * (double)current.Height) - (4.7 * age)) * activity;
             } else
             {
-                caroriesDemand = (66.5 + (13.7 * (double)current.Weight) +(5.0 * (double)current.Height) - (6.8 * 25.0)) * 1.2;
+                caroriesDemand = (66.5 + (13.7 * (double)current.Weight) +(5.0 * (double)current.Height) - (6.8 * age)) * activity;
             }
             if (current.Weight > target.Weight)
             {

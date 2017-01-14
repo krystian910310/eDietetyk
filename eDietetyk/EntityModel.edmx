@@ -104,6 +104,19 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Activity" Type="int" Nullable="false" />
+          <Property Name="SexType" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserMeals">
           <Key>
             <PropertyRef Name="Id" />
@@ -113,15 +126,6 @@
           <Property Name="IdMeal" Type="int" Nullable="false" />
           <Property Name="Weight" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsersInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="BirthDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK@Diets@Id@AspNetUsers@Id">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -147,6 +151,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK@UserInfo@Id@AspNetUsers@Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK@UserMeals@Id@AspNetUsers@Id">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="UserMeals" Type="Self.UserMeals" Multiplicity="*" />
@@ -168,18 +184,6 @@
             </Principal>
             <Dependent Role="UserMeals">
               <PropertyRef Name="IdMeal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK@Users@Id@AspNetUsers@Id">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="UsersInfo" Type="Self.UsersInfo" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersInfo">
-              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -249,8 +253,8 @@
           <EntitySet Name="Diets" EntityType="Self.Diets" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meals" EntityType="Self.Meals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Metrics" EntityType="Self.Metrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMeals" EntityType="Self.UserMeals" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK@Diets@Id@AspNetUsers@Id" Association="Self.FK@Diets@Id@AspNetUsers@Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Diets" EntitySet="Diets" />
@@ -259,6 +263,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Metrics" EntitySet="Metrics" />
           </AssociationSet>
+          <AssociationSet Name="FK@UserInfo@Id@AspNetUsers@Id" Association="Self.FK@UserInfo@Id@AspNetUsers@Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK@UserMeals@Id@AspNetUsers@Id" Association="Self.FK@UserMeals@Id@AspNetUsers@Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="UserMeals" EntitySet="UserMeals" />
@@ -266,10 +274,6 @@
           <AssociationSet Name="FK@UserMeals@Id@Meals@Id" Association="Self.FK@UserMeals@Id@Meals@Id">
             <End Role="Meals" EntitySet="Meals" />
             <End Role="UserMeals" EntitySet="UserMeals" />
-          </AssociationSet>
-          <AssociationSet Name="FK@Users@Id@AspNetUsers@Id" Association="Self.FK@Users@Id@AspNetUsers@Id">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="UsersInfo" EntitySet="UsersInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -301,8 +305,8 @@
           <EntitySet Name="Diets" EntityType="Model.Diets" />
           <EntitySet Name="Meals" EntityType="Model.Meals" />
           <EntitySet Name="Metrics" EntityType="Model.Metrics" />
+          <EntitySet Name="UserInfo" EntityType="Model.UserInfo" />
           <EntitySet Name="UserMeals" EntityType="Model.UserMeals" />
-          <EntitySet Name="UsersInfo" EntityType="Model.UsersInfo" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -319,13 +323,13 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Metrics" EntitySet="Metrics" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_Id_AspNetUsers_Id" Association="Model.FK_UserInfo_Id_AspNetUsers_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserMeals_Id_AspNetUsers_Id" Association="Model.FK_UserMeals_Id_AspNetUsers_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="UserMeals" EntitySet="UserMeals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Id_AspNetUsers_Id" Association="Model.FK_Users_Id_AspNetUsers_Id">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="UsersInfo" EntitySet="UsersInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_UserMeals_Id_Meals_Id" Association="Model.FK_UserMeals_Id_Meals_Id">
             <End Role="Meals" EntitySet="Meals" />
@@ -395,8 +399,8 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="Diets" Relationship="Model.FK_Diets_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Diets" />
           <NavigationProperty Name="Metrics" Relationship="Model.FK_Metrics_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="Metrics" />
+          <NavigationProperty Name="UserInfo" Relationship="Model.FK_UserInfo_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UserInfo" />
           <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UserMeals" />
-          <NavigationProperty Name="UsersInfo" Relationship="Model.FK_Users_Id_AspNetUsers_Id" FromRole="AspNetUsers" ToRole="UsersInfo" />
           <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Diets">
@@ -418,10 +422,10 @@
           <Property Name="Calories" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="Meals" ToRole="UserMeals" />
           <Property Name="Protein" Type="Int32" />
           <Property Name="Sugar" Type="Int32" />
           <Property Name="Fat" Type="Int32" />
+          <NavigationProperty Name="UserMeals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="Meals" ToRole="UserMeals" />
         </EntityType>
         <EntityType Name="Metrics">
           <Key>
@@ -440,6 +444,20 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Metrics_Id_AspNetUsers_Id" FromRole="Metrics" ToRole="AspNetUsers" />
         </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activity" Type="Int32" Nullable="false" />
+          <Property Name="SexType" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_UserInfo_Id_AspNetUsers_Id" FromRole="UserInfo" ToRole="AspNetUsers" />
+        </EntityType>
         <EntityType Name="UserMeals">
           <Key>
             <PropertyRef Name="Id" />
@@ -451,16 +469,6 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_UserMeals_Id_AspNetUsers_Id" FromRole="UserMeals" ToRole="AspNetUsers" />
           <NavigationProperty Name="Meals" Relationship="Model.FK_UserMeals_Id_Meals_Id" FromRole="UserMeals" ToRole="Meals" />
-        </EntityType>
-        <EntityType Name="UsersInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Users_Id_AspNetUsers_Id" FromRole="UsersInfo" ToRole="AspNetUsers" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -514,6 +522,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserInfo_Id_AspNetUsers_Id">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserMeals_Id_AspNetUsers_Id">
           <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
           <End Type="Model.UserMeals" Role="UserMeals" Multiplicity="*" />
@@ -523,18 +543,6 @@
             </Principal>
             <Dependent Role="UserMeals">
               <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Id_AspNetUsers_Id">
-          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="Model.UsersInfo" Role="UsersInfo" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersInfo">
-              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -554,7 +562,7 @@
           <End Type="Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -656,6 +664,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="Model.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SexType" ColumnName="SexType" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserMeals">
             <EntityTypeMapping TypeName="Model.UserMeals">
               <MappingFragment StoreEntitySet="UserMeals">
@@ -663,16 +685,6 @@
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="IdMeal" ColumnName="IdMeal" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersInfo">
-            <EntityTypeMapping TypeName="Model.UsersInfo">
-              <MappingFragment StoreEntitySet="UsersInfo">
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

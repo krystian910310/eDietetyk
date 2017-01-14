@@ -1,0 +1,84 @@
+﻿@model UserInfo
+
+<div class="container" id="userEditor">
+    <div class="form form-container">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 class="text-center">Podaj swoje dane:</h4>
+                <hr/>
+
+                @if (!string.IsNullOrEmpty(ViewBag.Errors))
+                {
+                    <div class="alert alert-danger">
+                        <p>
+                            @ViewBag.Errors
+                        </p>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label class="control-label col-md-7">Imię:</label>
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-7">Nazwisko:</label>
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-7">Płeć:</label>
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(model => model.SexType, new List<SelectListItem>() {new SelectListItem() {Text = "mężczyzna", Value = "1"}, new SelectListItem() {Text = "kobieta", Value = "2"}}, new {@class = "form-control"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-7">Data urodzenia:</label>
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.BirthDate, new {htmlAttributes = new {@class = "form-control", @id= "BirthDate"} })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-12 text-center" style="text-align: center;">Określ swoją aktywność fizyczną:</label>
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.Activity, (List<SelectListItem>) ViewBag.ActivityList, new {@class = "form-control"})
+                    </div>
+                </div>
+
+                <br/>
+
+                <p style="font-size: 12px; color: #428BCA">* Dane będą wykorzystane do obliczenia diety.</p>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="submit" value="Zapisz" class="btn btn-primary"/>
+                    </div>
+
+                    <div class="col-md-6 text-right">
+                        <a href="/Home/Index" class="btn btn-default">Anuluj</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
+
+<script>
+        var picker = $('#BirthDate').datepicker({
+            format: 'yyyy/mm/dd',
+            weekStart: 1
+        });
+        $('#BirthDate').mask('0000/00/00', { placeholder: '____/__/__' });
+</script>

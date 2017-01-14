@@ -113,8 +113,29 @@ body, html {
         background-size: 60px 60px;
     }
 
-    .till#progress article {
+    /******************* Kafelek DANYCH OSOBOWYCH **********************/
+
+    .till#user h2 {
+        background: url('images/user.png') no-repeat;
+        background-size: 60px 60px;
     }
+
+    .till#user article {
+        position: relative;
+        overflow: auto;
+    }
+
+        .till#user article .item {
+            overflow: auto;
+        }
+
+        .till#user article .item > div:first-of-type {
+            text-align: right;
+        }
+
+        .till#user article .item > div:last-of-type {
+            text-align: left;
+        }
 
     /******************* Kafelek POSIŁKÓW **********************/
 
@@ -327,6 +348,15 @@ body, html {
 .form-container.form {
     max-width: 400px;
     padding: 40px 40px;
+}
+
+#userEditor .form-container.form {
+    max-width: 500px;
+}
+
+#userEditor select {
+    margin-top: 10px;
+    width: 100%;
 }
 
 

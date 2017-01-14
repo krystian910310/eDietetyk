@@ -12,12 +12,16 @@ namespace eDietetyk
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersInfo
+    public partial class UserInfo
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string IdUser { get; set; }
+        public string Name { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
         public System.DateTime BirthDate { get; set; }
+        public int Activity { get; set; }
+        public int SexType { get; set; }
+        public System.DateTime CreateDate { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
     }

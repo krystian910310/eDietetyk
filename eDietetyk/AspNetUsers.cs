@@ -21,6 +21,7 @@ namespace eDietetyk
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.Diets = new HashSet<Diets>();
             this.Metrics = new HashSet<Metrics>();
+            this.UserInfo = new HashSet<UserInfo>();
             this.UserMeals = new HashSet<UserMeals>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
         }
@@ -47,8 +48,9 @@ namespace eDietetyk
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Metrics> Metrics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserInfo> UserInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserMeals> UserMeals { get; set; }
-        public virtual UsersInfo UsersInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }

@@ -1,0 +1,76 @@
+﻿@model UserInfo
+
+
+<div class="till" id="user">
+    <h2>Twoje dane</h2>
+    <article class="text-center">
+        @if (Model == null)
+        {
+            string message = "Uzupełnij swoje dane";
+
+            <text>
+                @Html.Partial("_NoData", new eDietetyk.Models.NoDataModel { Message = message })
+            </text>
+        }
+        else
+        {
+            <div class="item">
+                <div class="col-sm-6">
+                    <label class="control-label">Imię:</label>
+                </div>
+                <div class="col-sm-6">
+                    <span>@Model.FirstName</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="col-sm-6">
+                    <label class="control-label">Nazwisko:</label>
+                </div>
+                <div class="col-sm-6">
+                    <span>@Model.Name</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="col-sm-6">
+                    <label class="control-label">Data urodzenia:</label>
+                </div>
+                <div class="col-sm-6">
+                    <span>@(Model.BirthDate.ToString("dd.MM.yyyy"))</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="col-sm-6">
+                    <label class="control-label">Płeć:</label>
+                </div>
+                <div class="col-sm-6">
+                    <span>@(Model.SexType == 1 ? "mężczyzna" : "kobieta")</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="col-sm-6">
+                    <label class="control-label">Aktywność:</label>
+                </div>
+                <div class="col-sm-6">
+                    <span>@(ViewBag.ActivityName)</span>
+                </div>
+            </div>
+            
+        }
+    </article>
+
+    <aside class="text-center">
+        @if (Model == null)
+        {
+            <a href="/User/Add" class="btn btn-primary">Dodaj</a>
+        }
+        else
+        {
+            <a href="/User/Edit" class="btn btn-primary">Zmień</a>
+        }
+
+    </aside>
+</div>
