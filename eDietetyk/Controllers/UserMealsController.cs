@@ -17,7 +17,7 @@ namespace eDietetyk.Controllers
         public ActionResult GetPanel()
         {
             var data = _service.GetMealsForDay(DateTime.Today, User.Identity.Name);
-            return View("Panel",data);
+            return View("Panel", data);
         }
 
         public ActionResult Add()
@@ -28,8 +28,18 @@ namespace eDietetyk.Controllers
         [HttpPost]
         public ActionResult Add(UserMealsViewModel data)
         {
+            if (data.MealId == 0)
+            {
+                ViewBag.Errors = "Nie wybrano posiłku.";
+                return View(data);
+            }
+            if (data.Weight <= 0 || data.Weight > 1000)
+            {
+                ViewBag.Errors = "Waga posiłku jest niepoprawna.";
+                return View(data);
+            }
             _service.AddUserMeals(data, User.Identity.Name);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

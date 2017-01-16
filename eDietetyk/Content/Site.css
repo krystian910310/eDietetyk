@@ -7,6 +7,7 @@ body, html {
     height: 100%;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    overflow: auto;
 }
 
 .body-content {
@@ -19,6 +20,7 @@ body, html {
 
 .till {
     width: 30%;
+    height: 340px;
     min-width: 300px;
     margin: 1.5%;
     float: left;
@@ -38,6 +40,7 @@ body, html {
         padding-left: 10px;
         padding-right: 10px;
         overflow: auto;
+        height: 205px;
     }
 
     .till aside {
@@ -62,23 +65,23 @@ body, html {
             overflow: auto;
         }
 
-        .till#metrics article .item > div:first-of-type {
-            text-align: right;
-        }
+            .till#metrics article .item > div:first-of-type {
+                text-align: right;
+            }
 
-        .till#metrics article .item > div:last-of-type {
-            text-align: left;
-        }
+            .till#metrics article .item > div:last-of-type {
+                text-align: left;
+            }
 
-        
-     /******************* Kafelek CELÓW **********************/
+
+    /******************* Kafelek CELÓW **********************/
 
     .till#target h2 {
         background: url('images/target.png') no-repeat;
         background-size: 60px 60px;
     }
 
-     .till#target article {
+    .till#target article {
         position: relative;
         overflow: auto;
     }
@@ -87,13 +90,13 @@ body, html {
             overflow: auto;
         }
 
-        .till#target article .item > div:first-of-type {
-            text-align: right;
-        }
+            .till#target article .item > div:first-of-type {
+                text-align: right;
+            }
 
-        .till#target article .item > div:last-of-type {
-            text-align: left;
-        }
+            .till#target article .item > div:last-of-type {
+                text-align: left;
+            }
 
     /******************* Kafelek DIETY **********************/
 
@@ -102,8 +105,12 @@ body, html {
         background-size: 60px 60px;
     }
 
-    .till#diets .empty{
+    .till#diets .empty {
         background: url('images/dieta-brakdanych.png');
+    }
+
+    .till#diets article {
+        height: 250px;
     }
 
     /******************* Kafelek POSTĘPÓW **********************/
@@ -111,6 +118,10 @@ body, html {
     .till#progress h2 {
         background: url('images/progres.png') no-repeat;
         background-size: 60px 60px;
+    }
+
+    .till#progress article {
+        height: 250px;
     }
 
     /******************* Kafelek DANYCH OSOBOWYCH **********************/
@@ -129,13 +140,13 @@ body, html {
             overflow: auto;
         }
 
-        .till#user article .item > div:first-of-type {
-            text-align: right;
-        }
+            .till#user article .item > div:first-of-type {
+                text-align: right;
+            }
 
-        .till#user article .item > div:last-of-type {
-            text-align: left;
-        }
+            .till#user article .item > div:last-of-type {
+                text-align: left;
+            }
 
     /******************* Kafelek POSIŁKÓW **********************/
 
@@ -362,16 +373,16 @@ body, html {
 
 /******************* Brak danych ************************************/
 
-div.nodata-container .img{
+div.nodata-container .img {
     width: 100%;
     height: 100%;
     background: url('images/brakdanych.png') no-repeat;
     background-position: center;
     background-size: contain;
-    min-height:120px;
+    min-height: 120px;
 }
 
-div.nodata-container p{
-   font-weight: bold;
-   text-align:center;
+div.nodata-container p {
+    font-weight: bold;
+    text-align: center;
 }
